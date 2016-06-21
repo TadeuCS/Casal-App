@@ -1,0 +1,16 @@
+------------------------------------------ Instalando o FireBird ------------------------------
+
+01- Execute o aplicativo: Firebird-2.1.3.18185_0_Win32.
+02- Selecione o Idioma: Portugues(Portugal).
+03- Clique o botão "Seguinte".
+04- Marque a opção "Aceito o Contrato", e clique em "Seguinte".
+05- Clique o botão "Seguinte".
+06- Clique o botão "Seguinte".
+07- Clique o botão "Seguinte".
+08- Clique o botão "Seguinte".
+09- Marque a opção "Copiar a biblioteca do cliente ...", e logo apos clique em "Seguinte".
+10- clique em "Instalar".
+11- Clique o botão "Seguinte".
+12- Clique em Concluir.
+
+-----------------------------------------------------------------------------------------------
