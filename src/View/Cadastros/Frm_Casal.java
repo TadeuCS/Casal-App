@@ -40,6 +40,7 @@ public class Frm_Casal extends javax.swing.JFrame {
 
     public Frm_Casal() {
         initComponents();
+        tbFoto.setVisible(false);
         txt_numero.setDocument(new IntegerDocument(5));
         camposOFF();
         txt_codigo.setEnabled(false);
@@ -242,13 +243,13 @@ public class Frm_Casal extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, "Cidade inválida!");
                                     txt_cidade.requestFocus();
                                 } else {
-                                    if (diretorio==null) {
-                                        buscaImagem();
-                                    } else {
+//                                    if (diretorio==null) {
+//                                        buscaImagem();
+//                                    } else {
                                         Salvar(txt_casal.getText().toUpperCase(), txt_telefone.getText(), txt_cep.getText().replaceAll("-", ""),
                                                 Integer.parseInt(txt_numero.getText()), txt_complemento.getText().toUpperCase(),
                                                 txt_endereco.getText().toUpperCase(), txt_bairro.getText().toUpperCase(), txt_cidade.getText().toUpperCase());
-                                    }
+//                                    }
                                 }
                             }
                         }
@@ -349,8 +350,7 @@ public class Frm_Casal extends javax.swing.JFrame {
         tabela1 = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         txt_qtde = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        foto = new javax.swing.JLabel();
+        tbFoto = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Casais");
@@ -438,7 +438,7 @@ public class Frm_Casal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_complemento, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                        .addComponent(txt_complemento))
                     .addGroup(pnl_dadosLayout.createSequentialGroup()
                         .addGroup(pnl_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -667,16 +667,8 @@ public class Frm_Casal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jScrollPane2.setBackground(new java.awt.Color(45, 113, 97));
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Foto"));
-
-        foto.setBackground(new java.awt.Color(45, 113, 97));
-        foto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                fotoMousePressed(evt);
-            }
-        });
-        jScrollPane2.setViewportView(foto);
+        tbFoto.setBackground(new java.awt.Color(45, 113, 97));
+        tbFoto.setBorder(javax.swing.BorderFactory.createTitledBorder("Foto"));
 
         javax.swing.GroupLayout pnl_fundoLayout = new javax.swing.GroupLayout(pnl_fundo);
         pnl_fundo.setLayout(pnl_fundoLayout);
@@ -686,19 +678,22 @@ public class Frm_Casal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_fundoLayout.createSequentialGroup()
-                        .addComponent(pnl_dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2))
-                    .addComponent(pnl_botoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnl_fundo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(11, 11, 11))
+                        .addGroup(pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnl_botoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnl_fundo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(11, 11, 11))
+                    .addGroup(pnl_fundoLayout.createSequentialGroup()
+                        .addComponent(pnl_dados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         pnl_fundoLayout.setVerticalGroup(
             pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_fundoLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(pnl_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
+                    .addComponent(tbFoto)
                     .addComponent(pnl_dados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnl_botoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -785,10 +780,6 @@ public class Frm_Casal extends javax.swing.JFrame {
         apagar();
     }//GEN-LAST:event_btn_apagarActionPerformed
 
-    private void fotoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fotoMousePressed
-        buscaImagem();
-    }//GEN-LAST:event_fotoMousePressed
-
     private void tabela1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela1MousePressed
 //        carregaImagem(this.getClass().getResource(tabela1.getValueAt(tabela1.getSelectedRow(), 0).toString()));
     }//GEN-LAST:event_tabela1MousePressed
@@ -836,7 +827,6 @@ public class Frm_Casal extends javax.swing.JFrame {
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_incluir;
     private javax.swing.JButton btn_salvar;
-    private javax.swing.JLabel foto;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -849,12 +839,12 @@ public class Frm_Casal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnl_botoes;
     private javax.swing.JPanel pnl_dados;
     private javax.swing.JPanel pnl_fundo;
     private javax.swing.JPanel pnl_fundo1;
     private javax.swing.JTable tabela1;
+    private javax.swing.JScrollPane tbFoto;
     private javax.swing.JTextField txt_bairro;
     private javax.swing.JTextField txt_casal;
     private javax.swing.JFormattedTextField txt_cep;
@@ -906,7 +896,7 @@ public class Frm_Casal extends javax.swing.JFrame {
             fcOrigem.transferTo(0, fcOrigem.size(), fcDestino);//copiando o arquivo e salvando no diretório que você escolheu  
             origem.close();
             destino.close();
-            foto.setIcon(null);
+//            foto.setIcon(null);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -924,9 +914,9 @@ public class Frm_Casal extends javax.swing.JFrame {
 
     private void carregaImagem(String caminho) {
         try {
-            foto.setIcon(new ImageIcon(alteraTamanhoImagem(getImagemByCaminho(caminho.replace("\\", "/")).getImage(), 120)));
-            foto.revalidate();
-            foto.repaint();
+//            foto.setIcon(new ImageIcon(alteraTamanhoImagem(getImagemByCaminho(caminho.replace("\\", "/")).getImage(), 120)));
+//            foto.revalidate();
+//            foto.repaint();
         } catch (Exception e) {
             System.out.println(e);
         }
